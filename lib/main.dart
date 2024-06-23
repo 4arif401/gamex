@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -29,12 +29,12 @@ class MyApp extends StatelessWidget {
         ),
       ),
       initialRoute: '/',
-      routes: {
-        '/': (context) => LoginPage(),
-        '/home': (context) => MyHomePage(),
-        '/register': (context) => RegisterPage(), // Add route for RegisterPage
-        '/profile': (context) => ProfilePage(), // Add route for ProfilePage
-      },
+      getPages: [
+        GetPage(name: '/', page: () => LoginPage()),
+        GetPage(name: '/home', page: () => MyHomePage()),
+        GetPage(name: '/profile', page: () => ProfilePage()),
+        GetPage(name: '/register', page: () => RegisterPage()),
+      ],
     );
   }
 }

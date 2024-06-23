@@ -237,121 +237,140 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildUserProfile() {
-    if (userController.userId.value.isEmpty) {
-      // User data not loaded yet
-      return Center(child: CircularProgressIndicator());
-    } else {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Align(
-            alignment: Alignment.centerLeft,
+  if (userController.userId.value.isEmpty) {
+    // User data not loaded yet
+    return Center(child: CircularProgressIndicator());
+  } else {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Name: ${userController.displayName.value}',
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+        ),
+        SizedBox(height: 10),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Email: ${userController.email.value}',
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+        ),
+        SizedBox(height: 10),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Phone: ${userController.phone.value}',
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+        ),
+        SizedBox(height: 10),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton(
+            onPressed: () {
+              // Perform logout action and navigate to LoginPage
+              Get.offAllNamed('/');
+            },
             child: Text(
-              'Name: ${userController.displayName.value}',
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
-          SizedBox(height: 10),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Email: ${userController.email.value}',
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
-          SizedBox(height: 10),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Phone: ${userController.phone.value}',
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
-          SizedBox(height: 20),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Edit Profile',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-          ),
-          SizedBox(height: 10),
-          TextField(
-            controller: _nameController,
-            decoration: InputDecoration(
-              labelText: 'Display Name',
-              labelStyle: TextStyle(color: Colors.white),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+              'Logout',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.redAccent,
               ),
             ),
-            style: TextStyle(color: Colors.white),
           ),
-          SizedBox(height: 10),
-          TextField(
-            controller: _emailController,
-            decoration: InputDecoration(
-              labelText: 'Email',
-              labelStyle: TextStyle(color: Colors.white),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
+        ),
+        SizedBox(height: 20),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Edit Profile',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+        ),
+        SizedBox(height: 10),
+        TextField(
+          controller: _nameController,
+          decoration: InputDecoration(
+            labelText: 'Display Name',
+            labelStyle: TextStyle(color: Colors.white),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
             ),
-            style: TextStyle(color: Colors.white),
-          ),
-          SizedBox(height: 10),
-          TextField(
-            controller: _phoneController,
-            decoration: InputDecoration(
-              labelText: 'Phone Number',
-              labelStyle: TextStyle(color: Colors.white),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
             ),
-            style: TextStyle(color: Colors.white),
           ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _passwordController,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    labelStyle: TextStyle(color: Colors.white),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
+          style: TextStyle(color: Colors.white),
+        ),
+        SizedBox(height: 10),
+        TextField(
+          controller: _emailController,
+          decoration: InputDecoration(
+            labelText: 'Email',
+            labelStyle: TextStyle(color: Colors.white),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+          ),
+          style: TextStyle(color: Colors.white),
+        ),
+        SizedBox(height: 10),
+        TextField(
+          controller: _phoneController,
+          decoration: InputDecoration(
+            labelText: 'Phone Number',
+            labelStyle: TextStyle(color: Colors.white),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+          ),
+          style: TextStyle(color: Colors.white),
+        ),
+        SizedBox(height: 10),
+        Row(
+          children: [
+            Expanded(
+              child: TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
                   ),
-                  style: TextStyle(color: Colors.white),
-                  obscureText: true, // Hide the password input
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
                 ),
+                style: TextStyle(color: Colors.white),
+                obscureText: true, // Hide the password input
               ),
-              SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: _updateUserDetails,
-                child: Text('Update'),
-                style: ElevatedButton.styleFrom(
-                  iconColor: Color(0xFF1b182b), // Button color
-                ),
+            ),
+            SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: _updateUserDetails,
+              child: Text('Update'),
+              style: ElevatedButton.styleFrom(
+                iconColor: Colors.white,
               ),
-            ],
-          ),
-        ],
-      );
-    }
+            ),
+          ],
+        ),
+      ],
+    );
   }
+}
+
 }
